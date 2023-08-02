@@ -12,10 +12,14 @@ ssh pi@<ip_address>
 2. Add hostnames of the other nodes and their IP addresses to the /etc/hosts file. 
 
    - open the file
-```bash
-sudo nano /etc/hosts
-```
-    - Now add the hostnames into the file
+   ```bash
+    sudo nano /etc/hosts
+    ```
+   - Add the hostnames into the file
+    ```bash
+    sudo nano /etc/hosts
+    ```
+    
 ```bash
 <ip addr of pi2>      pi2
 <ip addr of pi3>      pi3
