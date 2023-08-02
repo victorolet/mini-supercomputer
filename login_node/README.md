@@ -1,6 +1,9 @@
+${toc}
+
 # Login Node
 
+## Configuring raspberry pi
 
 ```bash
-ssh pi@<ip addr of pi1>
+ssh pi@<ip_address>
 ```
