@@ -5,11 +5,11 @@
 ## Configuring the login node
 Login node is the Raspberry pi that you ssh into to use the cluster
 
-1. Login to the login node
+Login to the login node
 ```bash
 ssh pi@<ip_address>
 ```
-2. Add hostnames of the other nodes and their IP addresses to the /etc/hosts file. 
+1. Add hostnames of the other nodes and their IP addresses to the /etc/hosts file. 
 
    - open the file
    ```bash
@@ -22,5 +22,12 @@ ssh pi@<ip_address>
     <ip addr of pi4>      pi4
 
     ```
+
+2. Install the SLURM Controller Packages
+   ```bash
+   sudo apt install slurm-wlm -y
+   ``` 
+
+3. SLURM Configuration
 
 ## Configure cgroups Support
