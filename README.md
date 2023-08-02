@@ -1,1 +1,1 @@
-# mini-supercomputer
+# Mini-Supercomputer
