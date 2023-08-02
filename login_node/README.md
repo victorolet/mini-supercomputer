@@ -17,14 +17,10 @@ ssh pi@<ip_address>
     ```
    - Add the hostnames into the file
     ```bash
-    sudo nano /etc/hosts
-    ```
-    
-```bash
-<ip addr of pi2>      pi2
-<ip addr of pi3>      pi3
-<ip addr of pi4>      pi4
+    <ip addr of pi2>      pi2
+    <ip addr of pi3>      pi3
+    <ip addr of pi4>      pi4
 
-```
+    ```
 
 ## Configure cgroups Support
