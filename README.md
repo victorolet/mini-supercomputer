@@ -22,12 +22,12 @@ This document explains the process of setting up and running a mini-supercompute
 
 * To change password or make any other changes after installing OS
 ```bash
-sudo raspi-config
+   sudo raspi-config
 ```
 
 * Make sure the system time is right - The SLURM scheduler require accurate system time. Install the ntpdate package to sync the system time periodically in the background.
 ```bash
-sudo apt install ntpdate -y
+   sudo apt install ntpdate -y
 ```
 
 

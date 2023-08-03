@@ -20,7 +20,6 @@ ssh pi@<ip_address>
     <ip addr of pi2>      pi2
     <ip addr of pi3>      pi3
     <ip addr of pi4>      pi4
-
     ```
 
 2. Install the SLURM Controller Packages
@@ -29,5 +28,36 @@ ssh pi@<ip_address>
    ``` 
 
 3. SLURM Configuration
+    ```bash
+    cd /etc/slurm
+    sudo -s
+    cp /usr/share/doc/slurm-client/examples/slurm.conf.simple.gz .
+    gzip -d slurm.conf.simple.gz
+    mv slurm.conf.simple slurm.conf
+    ```
+
+4. Edit the configuration
+   ```bash
+   nano slurm.conf
+   ```
+   Then edit the configuration
+   ```bash
+   SlurmctldHost=pi1(<ip addr of pi1>)
+   ```
+
+5. Near the end of the file, there should be an example entry for the compute node. Delete it, and add the following configurations for the cluster nodes:
+
+    ```bash
+    NodeName=pi1 NodeAddr=<ip addr of pi1> CPUs=4 State=UNKNOWN
+    NodeName=pi2 NodeAddr=<ip addr of pi2> CPUs=4 State=UNKNOWN
+    NodeName=pi3 NodeAddr=<ip addr of pi3> CPUs=4 State=UNKNOWN
+    ```
+
+6. Be sure to delete the example partition in the file, then add the following on one line
+
+   ```bash
+   PartitionName=mycluster Nodes=pi[2-8] Default=YES MaxTime=INFINITE State=UP
+   ```
+
 
 ## Configure cgroups Support
