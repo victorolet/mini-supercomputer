@@ -20,7 +20,7 @@ This document explains the process of setting up and running a mini-supercompute
 
 ## Set up the Raspberry pi
 
-* To change password or make any other changes after installing OS
+* To change password or timezone or make any other changes after installing OS
 ```bash
    sudo raspi-config
 ```
