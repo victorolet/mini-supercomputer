@@ -21,15 +21,25 @@ This document explains the process of setting up and running a mini-supercompute
 ## Set up the Raspberry pi
 
 * To change password or timezone or make any other changes after installing OS
-```bash
+    ```bash
    sudo raspi-config
-```
+    ```
 
 * Make sure the system time is right - The SLURM scheduler require accurate system time. Install the ntpdate package to sync the system time periodically in the background.
-```bash
+    ```bash
    sudo apt install ntpdate -y
-```
+    ```
 
+* Reboot the Raspberry Pi to apply the changes
+    ```bash
+    sudo reboot
+    ```
+
+* Power off the Raspberry Pi
+    ```bash
+    sudo poweroff
+    ```
+Repeat this process for all eight Raspberry Pis.
 
 ## References 
 https://glmdev.medium.com/building-a-raspberry-pi-cluster-784f0df9afbd
