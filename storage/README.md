@@ -27,9 +27,12 @@ In a mini-supercomputer all the nodes should be able to access the same files, i
    ```bash
    sudo mkdir /clusterfs
    ```
+   Change the folder permission and make the directory accessible by all the users in the system. They can read, write and execute.
+
    ```bash
    sudo chown nobody.nogroup -R /clusterfs
    ```
+
    ```bash
    sudo chmod 777 -R /clusterfs
    ```
@@ -45,8 +48,49 @@ In a mini-supercomputer all the nodes should be able to access the same files, i
    ```bash
    UUID=<UUID of hard drive> /clusterfs ext2 defaults,nofail 0 0
    ```
+   Exit the file.
 
    Mount the hard drive
    ```bash
    mount /dev/sda1 /clusterfs
    ```
+   set loose permisson - owner has read, write and execute permissions. The group and other users have read and write permissions.
+   ```bash
+   sudo chown nobody.nogroup -R /clusterfs
+   sudo chmod -R 766 /clusterfs
+   ```
+
+   ## Export the NFS share
+   Now, we need to export the mounted drive as a network file system share so the other nodes can access it.
+
+   1. Install the NFS server
+   ```bash
+   sudo apt install nfs-kernel-server -y
+   ```
+
+  2. Export the NFS share 
+     Edit /etc/exports
+     ```bash
+     nano /etc/exports
+     ```
+     Add the following line to the file
+     ```bash
+     /clusterfs    <ip addr schema>(rw,sync,no_root_squash,no_subtree_check)
+     ```
+     (Eg_ If your LAN addresses were 192.168.1.x you would have 
+     /clusterfs 192.168.1.0/24(rw,sync,no_root_squash,no_subtree_check) )
+
+    Run the following command to update the NFS kernel server
+    ```bash
+    sudo exportfs -a
+    ```
+
+    ## Mount NFS Share on other nodes
+    Mount NFS share on the other nodes so that they can access it. Do this process for all the worker nodes.
+
+    1. Install the NFS client
+       ```bash
+       sudo apt install nfs-common -y
+       ```
+
+    2. 
