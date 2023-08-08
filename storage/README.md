@@ -87,11 +87,11 @@ In a mini-supercomputer all the nodes should be able to access the same files, i
     
 
 ## Mount NFS Share on other nodes
-    Mount NFS share on the other nodes so that they can access it. Do this process for all the worker nodes.
+   Mount NFS share on the other nodes so that they can access it. Do this process for all the worker nodes.
 
 1. Install the NFS client
        ```bash
        sudo apt install nfs-common -y
        ```
 
-    2. 
+2. 
