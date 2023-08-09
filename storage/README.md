@@ -90,8 +90,31 @@ In a mini-supercomputer all the nodes should be able to access the same files, i
    Mount NFS share on the other nodes so that they can access it. Do this process for all the worker nodes.
 
 1. Install the NFS client
-       ```bash
-       sudo apt install nfs-common -y
-       ```
+   ```bash
+   sudo apt install nfs-common -y
+   ```
 
-2. 
+2. Create the mount directory
+   This should be the same directory that you mounted the hard drive on the login node. (In our case /clusterfs)
+   
+   ```bash
+   sudo mkdir /clusterfs
+   ```
+
+   ```bash
+   sudo chown nobody.nogroup -R /clusterfs
+   ```
+
+   ```bash
+   sudo chmod 777 -R /clusterfs
+   ```
+3. Setup automatic mounting
+   edit /etc/fstab by adding the following line
+   ```bash
+   <master node ip>:/clusterfs    /clusterfs    nfs    defaults   0 0
+   ```
+
+   now mount it
+   ```bash
+   sudo mount -a
+   ```
