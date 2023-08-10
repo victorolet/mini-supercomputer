@@ -43,6 +43,8 @@ Repeat this process for all eight Raspberry Pis.
 
 Next step is to configure the storage
 
+Then configure the login node
+
 ## References 
 https://glmdev.medium.com/building-a-raspberry-pi-cluster-784f0df9afbd
 

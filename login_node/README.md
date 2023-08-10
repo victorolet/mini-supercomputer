@@ -44,6 +44,8 @@ ssh pi@<ip_address>
    ```bash
    SlurmctldHost=pi1(<ip addr of pi1>)
    ```
+   Set the cluster name
+   ClusterName=mycluster
 
 5. Near the end of the file, there should be an example entry for the compute node. Delete it, and add the following configurations for the cluster nodes:
 
@@ -61,3 +63,49 @@ ssh pi@<ip_address>
 
 
 ## Configure cgroups Support
+
+1. Create a fine called cgroup.conf
+   ```bash
+   nano cgroup.conf
+   ```
+   This will open a new file. copy and paste the following code and save it.
+   ```bash
+   CgroupMountpoint="/sys/fs/cgroup"
+   CgroupAutomount=yes
+   CgroupReleaseAgentDir="/etc/slurm/cgroup"
+   AllowedDevicesFile="/etc/slurm/cgroup_allowed_devices_file.conf"
+   ConstrainCores=no
+   TaskAffinity=no
+   ConstrainRAMSpace=yes
+   ConstrainSwapSpace=no
+   ConstrainDevices=no
+   AllowedRamSpace=100
+   AllowedSwapSpace=0
+   MaxRAMPercent=100
+   MaxSwapPercent=100
+   MinRAMSpace=30
+   ```
+
+2. Now, whitelist system devices by creating the file cgroup_allowed_devices_file.conf
+   ```bash
+   nano cgroup_allowed_devices_file.conf
+   ```
+   add the following lines
+
+   ```bash
+   /dev/null
+   /dev/urandom
+   /dev/zero
+   /dev/sda*
+   /dev/cpu/*/*
+   /dev/pts/*
+   /clusterfs*
+   ```
+
+## Copy the configuration files to shared storage
+Copy the configuration files and munge key in to shared storage so that the other nodes can have the same configuration files.
+
+```bash
+sudo cp slurm.conf cgroup.conf cgroup_allowed_devices_file.conf /clusterfs
+sudo cp /etc/munge/munge.key /clusterfs
+```
