@@ -49,6 +49,7 @@ In a mini-supercomputer all the nodes should be able to access the same files, i
    UUID=<UUID of hard drive> /clusterfs ext2 defaults,nofail 0 0
    ```
    Exit the file.
+   (nofail will make sure the cluster will work even if the hard drive is not connected)
 
    Mount the hard drive
    ```bash

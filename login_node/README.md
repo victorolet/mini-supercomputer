@@ -109,3 +109,25 @@ Copy the configuration files and munge key in to shared storage so that the othe
 sudo cp slurm.conf cgroup.conf cgroup_allowed_devices_file.conf /clusterfs
 sudo cp /etc/munge/munge.key /clusterfs
 ```
+
+## Enable and Start SLURM Control Services
+
+1. Munge
+   ```bash
+   sudo systemctl enable munge
+   sudo systemctl start munge
+   ```
+
+2. The SLURM daemon
+   ```bash
+   sudo systemctl enable slurmd
+   sudo systemctl start slurmd
+   ```
+
+3. And the control daemon
+   ```bash
+   sudo systemctl enable slurmctld
+   sudo systemctl start slurmctld
+   ```
+
+4. Reboot
