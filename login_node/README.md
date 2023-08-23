@@ -64,7 +64,7 @@ ssh pi@<ip_address>
 
 ## Configure cgroups Support
 
-1. Create a fine called cgroup.conf
+1. Create a file called cgroup.conf
    ```bash
    nano cgroup.conf
    ```

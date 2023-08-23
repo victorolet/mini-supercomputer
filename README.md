@@ -45,6 +45,9 @@ Next step is to configure the storage
 
 Then configure the login node
 
+Configure the worker nodes
+
 ## References 
-https://glmdev.medium.com/building-a-raspberry-pi-cluster-784f0df9afbd
+1. Raspberry pi cluster configuration - https://glmdev.medium.com/building-a-raspberry-pi-cluster-784f0df9afbd
+2. Setup wireless access point - https://pimylifeup.com/raspberry-pi-wireless-access-point/
 
