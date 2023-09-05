@@ -22,7 +22,7 @@ In a mini-supercomputer all the nodes should be able to access the same files, i
 
 4. Create the mount directory
    The mount directory should be same accross all the nodes.
-   In our cluster it is /clusterfs
+   In our cluster it is /cNlusterfs
 
    ```bash
    sudo mkdir /clusterfs

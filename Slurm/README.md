@@ -1,2 +1,2 @@
-# SLRUM commands
+# SLURM commands
 
