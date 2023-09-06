@@ -21,12 +21,42 @@ sudo systemctl stop dnsmasq
 sudo nano /etc/dhcpcd.conf
 ```
 5. Add the following code to the bottom of the file. then save it and quit.
-  ```bash
+```bash
   interface wlan0
     static ip_address=192.168.0.1/24
     nohook wpa_supplicant
-  ```
+```
 6. Reload the dhcpd service
-   ```bash
+```bash
    sudo systemctl restart dhcpcd
-   ```
+```
+
+7. Edit hostapd configuration
+```bash
+   sudo nano /etc/hostapd/hostapd.conf
+```
+
+8. Add the following lines to the file. Do NOT forget to change the ssid and wpa_passphrase. 
+```bash
+interface=wlan0
+driver=nl80211
+
+hw_mode=g
+channel=6
+ieee80211n=1
+wmm_enabled=0
+macaddr_acl=0
+ignore_broadcast_ssid=0
+
+auth_algs=1
+wpa=2
+wpa_key_mgmt=WPA-PSK
+wpa_pairwise=TKIP
+rsn_pairwise=CCMP
+
+# This is the name of the network
+ssid=Pi_cluster
+# The network passphrase
+wpa_passphrase=minisupercomputer
+```
+
