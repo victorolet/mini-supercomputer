@@ -16,3 +16,17 @@ sudo apt install hostapd dnsmasq iptables
 sudo systemctl stop hostapd
 sudo systemctl stop dnsmasq
 ```
+4. Modify the dhcpd configuration
+```bash
+sudo nano /etc/dhcpcd.conf
+```
+  Add the following code to the bottom of the file. then save it and quit.
+  ```bash
+  interface wlan0
+    static ip_address=192.168.0.1/24
+    nohook wpa_supplicant
+  ```
+5. Reload the dhcpd service
+   ```bash
+   sudo systemctl restart dhcpcd
+   ```
