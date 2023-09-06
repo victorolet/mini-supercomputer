@@ -6,7 +6,7 @@ sudo apt update
 sudo apt upgrade
 ```
 
-2.Install our two packages hostapd, dnsmasq and iptables.
+2. Install our two packages hostapd, dnsmasq and iptables.
 ```bash
 sudo apt install hostapd dnsmasq iptables
 ```
@@ -20,13 +20,13 @@ sudo systemctl stop dnsmasq
 ```bash
 sudo nano /etc/dhcpcd.conf
 ```
-  Add the following code to the bottom of the file. then save it and quit.
+5. Add the following code to the bottom of the file. then save it and quit.
   ```bash
   interface wlan0
     static ip_address=192.168.0.1/24
     nohook wpa_supplicant
   ```
-5. Reload the dhcpd service
+6. Reload the dhcpd service
    ```bash
    sudo systemctl restart dhcpcd
    ```
