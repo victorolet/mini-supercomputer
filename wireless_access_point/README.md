@@ -22,18 +22,18 @@ sudo nano /etc/dhcpcd.conf
 ```
 5. Add the following code to the bottom of the file. then save it and quit.
 ```bash
-  interface wlan0
-    static ip_address=192.168.0.1/24
-    nohook wpa_supplicant
+interface wlan0
+  static ip_address=192.168.0.1/24
+  nohook wpa_supplicant
 ```
 6. Reload the dhcpd service
 ```bash
-   sudo systemctl restart dhcpcd
+sudo systemctl restart dhcpcd
 ```
 
 7. Edit hostapd configuration
 ```bash
-   sudo nano /etc/hostapd/hostapd.conf
+sudo nano /etc/hostapd/hostapd.conf
 ```
 
 8. Add the following lines to the file. Do NOT forget to change the ssid and wpa_passphrase. 
