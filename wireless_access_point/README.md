@@ -36,7 +36,7 @@ sudo systemctl restart dhcpcd
 sudo nano /etc/hostapd/hostapd.conf
 ```
 
-8. Add the following lines to the file. Do NOT forget to change the ssid and wpa_passphrase. 
+8. Add the following lines to the file. Do NOT forget to change the ssid and wpa_passphrase to your own password. Make sure it is secure enough.
 ```bash
 interface=wlan0
 driver=nl80211
@@ -60,3 +60,45 @@ ssid=Pi_cluster
 wpa_passphrase=minisupercomputer
 ```
 
+9. Run the following command to edit hostapd
+```bash
+sudo nano /etc/default/hostapd
+```
+Find the line 
+#DAEMON_CONF=""
+and Replace it with the following code
+```bash
+DAEMON_CONF="/etc/hostapd/hostapd.conf"
+```
+Now save and Quit
+
+10. Run the following command to edit the second configuration file which is located within init.d folder
+```bash
+sudo nano /etc/init.d/hostapd
+```
+Find the line 
+#DAEMON_CONF=""
+and Replace it with the following code
+```bash
+DAEMON_CONF="/etc/hostapd/hostapd.conf"
+```
+Now save and Quit. hostapd is now setup
+
+13. Next step is to setting up dnsmasq.
+First, rename the current dnsmasq file as we dont need it for our configuration.
+```bash
+sudo mv /etc/dnsmasq.conf /etc/dnsmasq.conf.orig
+```
+14. Now create a new file using nano comand
+```bash
+sudo nano /etc/dnsmasq.conf
+```
+15. Add the following commands to the file to tell dnsmasq how to handle all the incoming connections.
+```bash
+interface=wlan0       # Use interface wlan0  
+server=1.1.1.1       # Use Cloudflare DNS  
+dhcp-range=192.168.0.50,192.168.0.150,12h # IP range and lease time  
+```
+Now save and quit the file
+
+16. 
