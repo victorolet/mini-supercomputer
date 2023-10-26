@@ -15,12 +15,13 @@ In a mini-supercomputer all the nodes should be able to access the same files, i
    lsblk
    ```
    
-3. Format the hard disk - In our case the main partition of the flash drive is at /dev/sda1
+3. Format the hard disk<br>
+ In our case the main partition of the flash drive is at /dev/sda1
    ```bash
    sudo mkfs /dev/sda1
    ```
 
-4. Create the mount directory
+4. Create the mount directory<br>
    The mount directory should be same accross all the nodes.
    In our cluster it is /cNlusterfs
 
@@ -37,7 +38,7 @@ In a mini-supercomputer all the nodes should be able to access the same files, i
    sudo chmod 777 -R /clusterfs
    ```
 
-5. Setup automatic mounting
+5. Setup automatic mounting<br>
    To mount the hard drive while booting, we need to find the unique ID (UUID) of the hard drive. To find that, run blkid and note down the UUID of /dev/sda1 (Not the UUID of raspberry pi memory card)
 
    Now edit fstab to mount the drive on boot.
@@ -48,7 +49,7 @@ In a mini-supercomputer all the nodes should be able to access the same files, i
    ```bash
    UUID=<UUID of hard drive> /clusterfs ext2 defaults,nofail 0 0
    ```
-   Exit the file.
+   Exit the file.<br>
    (nofail will make sure the cluster will work even if the hard drive is not connected)
 
    Mount the hard drive
@@ -69,7 +70,7 @@ In a mini-supercomputer all the nodes should be able to access the same files, i
     sudo apt install nfs-kernel-server -y
     ```
 
-2. Export the NFS share 
+2. Export the NFS share<br>
    Edit /etc/exports
     ```bash
     nano /etc/exports
@@ -95,7 +96,7 @@ In a mini-supercomputer all the nodes should be able to access the same files, i
    sudo apt install nfs-common -y
    ```
 
-2. Create the mount directory
+2. Create the mount directory<br>
    This should be the same directory that you mounted the hard drive on the login node. (In our case /clusterfs)
    
    ```bash
@@ -109,7 +110,7 @@ In a mini-supercomputer all the nodes should be able to access the same files, i
    ```bash
    sudo chmod 777 -R /clusterfs
    ```
-3. Setup automatic mounting
+3. Setup automatic mounting<br>
    edit /etc/fstab by adding the following line
    ```bash
    <master node ip>:/clusterfs    /clusterfs    nfs    defaults   0 0
