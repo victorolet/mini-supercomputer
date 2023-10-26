@@ -9,7 +9,7 @@ In a mini-supercomputer all the nodes should be able to access the same files, i
    ssh pi@<ip address of login node>
    ```
 
-2. Find the drive identifier
+2. Find the drive identifier<br>
    Plug the harddisk into one of the USB ports on the login node and find its dev location from the output of 
    ```bash
    lsblk

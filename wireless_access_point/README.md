@@ -101,4 +101,16 @@ dhcp-range=192.168.0.50,192.168.0.150,12h # IP range and lease time
 ```
 Now save and quit the file
 
-16. 
+16. Now we need to configure Raspberry Pi to forward all traffic from wlan0 connection to ethernet connection. We must do this by editing sysctl.conf file.
+```bash
+sudo nano /etc/sysctl.conf
+```
+
+17. Find
+```bash
+#net.ipv4.ip_forward=1
+```
+Replace it with
+```bash
+net.ipv4.ip_forward=1
+```
