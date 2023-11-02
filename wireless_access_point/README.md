@@ -135,5 +135,21 @@ sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
 sudo nano /etc/rc.local
 ```
 
-22. 
+22. Add the following lines above exit 0. This code reads the settings out of iptables.ipv4.nat file and loads them into the iptables.
+```bash
+sudo hostapd /etc/hostapd/hostapd.conf &
+iptables-restore < /etc/iptables.ipv4.nat
+```
 
+23. Finally, start both services and enable them in systemctl. 
+```bash
+sudo systemctl unmask hostapd
+sudo systemctl enable hostapd
+sudo systemctl start hostapd
+sudo service dnsmasq start
+```
+
+24. Reboot the raspberrypi
+```bash
+sudo reboot
+```
