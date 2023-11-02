@@ -114,3 +114,26 @@ Replace it with
 ```bash
 net.ipv4.ip_forward=1
 ```
+
+18. Run the following command to activate it immediately 
+```bash
+sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"
+```
+
+19. Configure a NAT between our wlan0 interface and our eth0 interface. 
+```bash
+sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+```
+
+20. Save the new rules somewhere so they are loaded back in on every boot.
+```bash
+sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
+```
+
+21. To make this file loaded back in on every reboot, modify the rc.local file.
+```bash
+sudo nano /etc/rc.local
+```
+
+22. 
+
