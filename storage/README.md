@@ -73,7 +73,7 @@ In a mini-supercomputer all the nodes should be able to access the same files, i
 2. Export the NFS share<br>
    Edit /etc/exports
     ```bash
-    nano /etc/exports
+    sudo nano /etc/exports
     ```
    Add the following line to the file
     ```bash
