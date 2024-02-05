@@ -18,6 +18,8 @@ This document explains the process of setting up and running a mini-supercompute
 5. Enable SSH server and setup username and password
 6. Save the settings and choose storage and then click on the “WRITE” button to write the operating system to the microSD card. Wait until it finishes and then eject the microSD and install it in Raspberry Pi.
 
+Note: In a cluster all raspberry Pis should have same version of operating system to work properly. 
+
 ## Set up the Raspberry pi
 
 * To change password or timezone or make any other changes after installing OS
