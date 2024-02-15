@@ -28,15 +28,7 @@ In a mini-supercomputer all the nodes should be able to access the same files, i
    ```bash
    sudo mkdir /clusterfs
    ```
-   Change the folder permission and make the directory accessible by all the users in the system. They can read, write and execute.
-
-   ```bash
-   sudo chown nobody.nogroup -R /clusterfs
-   ```
-
-   ```bash
-   sudo chmod 777 -R /clusterfs
-   ```
+   
 
 5. Setup automatic mounting<br>
    To mount the hard drive while booting, we need to find the unique ID (UUID) of the hard drive. To find that, run blkid and note down the UUID of /dev/sda1 (Not the UUID of raspberry pi memory card)
@@ -54,12 +46,11 @@ In a mini-supercomputer all the nodes should be able to access the same files, i
 
    Mount the hard drive
    ```bash
-   mount /dev/sda1 /clusterfs
+   sudo mount -a
    ```
    set loose permisson - owner has read, write and execute permissions. The group and other users have read and write permissions.
    ```bash
-   sudo chown nobody.nogroup -R /clusterfs
-   sudo chmod -R 766 /clusterfs
+   sudo chmod -R 777 /clusterfs
    ```
 
 ## Export the NFS share
