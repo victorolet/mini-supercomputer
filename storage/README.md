@@ -102,6 +102,10 @@ In a mini-supercomputer all the nodes should be able to access the same files, i
    ```bash
    <master node ip>:/clusterfs    /clusterfs    nfs    defaults   0 0
    ```
+   Reload systemctl
+   ```bash
+   sudo systemctl daemon-reload
+   ```
 
    now mount it
    ```bash
