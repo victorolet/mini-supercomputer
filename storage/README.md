@@ -95,10 +95,6 @@ In a mini-supercomputer all the nodes should be able to access the same files, i
    ```
 
    ```bash
-   sudo chown nobody.nogroup -R /clusterfs
-   ```
-
-   ```bash
    sudo chmod 777 -R /clusterfs
    ```
 3. Setup automatic mounting<br>
