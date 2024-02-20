@@ -50,15 +50,16 @@ ssh pi@<ip_address>
 5. Near the end of the file, there should be an example entry for the compute node. Delete it, and add the following configurations for the cluster nodes:
 
     ```bash
-    NodeName=pi1 NodeAddr=<ip addr of pi1> CPUs=4 State=UNKNOWN
-    NodeName=pi2 NodeAddr=<ip addr of pi2> CPUs=4 State=UNKNOWN
-    NodeName=pi3 NodeAddr=<ip addr of pi3> CPUs=4 State=UNKNOWN
+    NodeName=pi1 CPUs=4 RealMemory=3700 State=UNKNOWN
+    NodeName=pi2 CPUs=4 RealMemory=3700 State=UNKNOWN
+    NodeName=pi3 CPUs=4 RealMemory=3700 State=UNKNOWN
+    
     ```
 
 6. Be sure to delete the example partition in the file, then add the following on one line
 
    ```bash
-   PartitionName=mycluster Nodes=pi[2-8] Default=YES MaxTime=INFINITE State=UP
+   PartitionName=new Nodes=ALL Default=YES MaxTime=INFINITE State=UP
    ```
 
 
