@@ -70,12 +70,9 @@ ssh pi@<ip_address>
    ```
    This will open a new file. copy and paste the following code and save it.
    ```bash
-   CgroupMountpoint="/sys/fs/cgroup"
+   groupMountpoint="/sys/fs/cgroup"
    CgroupAutomount=yes
-   CgroupReleaseAgentDir="/etc/slurm/cgroup"
-   AllowedDevicesFile="/etc/slurm/cgroup_allowed_devices_file.conf"
    ConstrainCores=no
-   TaskAffinity=no
    ConstrainRAMSpace=yes
    ConstrainSwapSpace=no
    ConstrainDevices=no
@@ -84,6 +81,7 @@ ssh pi@<ip_address>
    MaxRAMPercent=100
    MaxSwapPercent=100
    MinRAMSpace=30
+
    ```
 
 2. Now, whitelist system devices by creating the file cgroup_allowed_devices_file.conf
