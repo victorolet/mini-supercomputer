@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <mpi.h>
+
+#define MASTER 0
+
+
+double calculate_pi(long long start, long long end, double step) {
+    double x, pi = 0.0;
+    for (long long i = start; i < end; i++) {
+        x = (i + 0.5) * step;
+        pi += 4.0 / (1.0 + x * x);
+    }
+    return pi;
+}
+
+int main(int argc, char *argv[]) {
+    int rank, size;
+    long long num_steps = 1000000000;  // Adjust the number of steps as needed
+
+    MPI_Init(&argc, &argv);
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &size);
+
+    double step = 1.0 / (double)num_steps;
+    long long local_steps = num_steps / size;
+    long long start = rank * local_steps;
+    long long end = (rank + 1) * local_steps;
+
+    // Calculate local sum
+    double local_sum = calculate_pi(start, end, step);
+
+    // Reduce local sums to get the global sum
+    double global_sum;
+    MPI_Reduce(&local_sum, &global_sum, 1, MPI_DOUBLE, MPI_SUM, MASTER, MPI_COMM_WORLD);
+
+ // Print the result in the master process
+    if (rank == MASTER) {
+        double pi = global_sum * step;
+        printf("Approximate value of pi: %.10f\n", pi);
+        
+    }
