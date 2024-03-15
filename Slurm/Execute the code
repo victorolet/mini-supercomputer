@@ -1,0 +1,23 @@
+1. To compile calc_pi.c code
+    Go to the working directory
+    ```bash
+    mpicc -o mpi_pi calc_pi.c
+    ```
+
+2. To start interactive job session
+    ```bash
+    salloc --ntasks=16 --nodes=4 --ntasks-per-node=4
+    ```
+
+    Note - number of node - the number of raspberry pis in which we want the code to run (1-7 in an 8 cluster raspberry pi)
+    ntasks-per-node - how many tasks to run parrelally within one raspberry pi. eacg raspberry pis have 4  nodes so this can be a value between 1 to 4.
+    ntasks - total number of parellal tasks, which is a product of nodes * ntasks-per-node
+
+
+3. To run the code 
+    ```bash
+    mpirun mpi_pi
+    ```
+
+4. To interactively see the code running in other nodes.
+ ssh in to those nodes and type 'top' to see.
