@@ -1,4 +1,18 @@
-* Configure static ip address for raspberry pi
+
+Configure static ip address for raspberry pi
+
+Method 1 - 
+1. open network configuration
+   ```bash
+   sudo nmtui
+   ```
+2. Click on Edit a connection
+3. click on wired connection and click Edit
+4. IPV4 configuration (manual)
+5. change the static ip address, gateway and DNS server
+
+Method 2 - using dhcpcd.conf (This will work only if the version of Raspberry pi OS you are using contain a file called dhcpcd.conf)
+    
     ```bash
     sudo nano /etc/dhcpcd.conf
     ```
