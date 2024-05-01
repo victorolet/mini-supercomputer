@@ -59,7 +59,7 @@ Note: In a cluster all raspberry Pis should have same version of operating syste
     ```bash
     sudo poweroff
     ```
-Repeat this process for all eight Raspberry Pis.
+In a Raspberry Pi cluster the login node should know the ip addresses of the worker node and the worker node should know the ip address of login node. So, the next step is to configure static ip address for the Raspberry pis.
 
 Then configure wireless access point
 
