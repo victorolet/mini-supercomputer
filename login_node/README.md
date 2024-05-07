@@ -21,6 +21,7 @@ ssh pi@<ip_address>
     <ip addr of pi3>      pi3
     <ip addr of pi4>      pi4
     ```
+    Save and exit
 
 2. Install the SLURM Controller Packages
    ```bash
@@ -61,7 +62,7 @@ ssh pi@<ip_address>
    ```bash
    PartitionName=new Nodes=ALL Default=YES MaxTime=INFINITE State=UP
    ```
-
+Save and exit
 
 ## Configure cgroups Support
 
