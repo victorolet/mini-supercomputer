@@ -1,6 +1,6 @@
 # Mini-Supercomputer
 
-This document explains the process of setting up and running a mini-supercomputer using 8 Raspberry Pi cluster.
+This document explains the process of setting up and running a mini-supercomputer using 8 Raspberry Pi cluster. However it is scalable to as many Raspberry Pis as you want.
  
 ## Parts used to build the cluster
 1. 8 x Raspberry Pi 4B
@@ -10,7 +10,9 @@ This document explains the process of setting up and running a mini-supercompute
 5. 8 x PoE+ hat
 6. SSD harddisk
 
-## Configuring Raspberry Pi operating system
+## Installing Raspberry Pi operating system
+
+
 1. Install Raspberry Pi Imager on you laptop/PC
 2. Connect microSD card to you PC and start the installation process
 3. Click on the “CHOOSE OS” button and select ‘Raspberry Pi OS (other) “ and then “Raspberry Pi OS Lite (64-bit).
@@ -18,7 +20,7 @@ This document explains the process of setting up and running a mini-supercompute
 5. Enable SSH server and setup username and password
 6. Save the settings and choose storage and then click on the “WRITE” button to write the operating system to the microSD card. Wait until it finishes and then eject the microSD and install it in Raspberry Pi.
 
-Note: In a cluster all raspberry Pis should have same version of operating system to work properly. 
+Note: In a cluster, all raspberry Pis should have same version of operating system to work properly. 
 
 ## Set up the Raspberry pi
 
@@ -31,35 +33,13 @@ Note: In a cluster all raspberry Pis should have same version of operating syste
     ```bash
    sudo apt install ntpdate -y
     ```
-
-* Configure static ip address for raspberry pi
-    ```bash
-    sudo nano /etc/dhcpcd.conf
-    ```
-
-    Now scroll down the bottom and add the following lines
-    ```bash
-    interface eth0
-    metric 300
-    static ip_address=192.168.0.40/24
-    static routers=192.168.0.1
-    static domain_name_servers=192.168.0.1
-
-    interface wlan0
-    metric 200
-    ```
-    Don't forgot to change the ip addresses
+In a Raspberry Pi cluster the login node should know the ip addresses of the worker node and the worker node should know the ip address of login node. So, the next step is to configure static ip address for the Raspberry pis. Follow the instructions on Static IP configuration to setup the static IP. Don't forget to take note of IP address for each Raspberry PIs.
 
 * Reboot the Raspberry Pi to apply the changes
     ```bash
     sudo reboot
     ```
 
-* Power off the Raspberry Pi
-    ```bash
-    sudo poweroff
-    ```
-In a Raspberry Pi cluster the login node should know the ip addresses of the worker node and the worker node should know the ip address of login node. So, the next step is to configure static ip address for the Raspberry pis.
 
 Then configure wireless access point
 
