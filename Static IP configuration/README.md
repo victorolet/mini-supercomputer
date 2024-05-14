@@ -1,7 +1,7 @@
 
 Configure static ip address for raspberry pi
 
-Method 1 - 
+Method 1 - We used this method for the project
 1. open network configuration
    ```bash
    sudo nmtui
