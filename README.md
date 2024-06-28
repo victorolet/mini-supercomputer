@@ -44,8 +44,11 @@ In a Raspberry Pi cluster the login node should know the ip addresses of the wor
 
 
 Next step is to configure the storage
+
 Then configure the login node 
+
 Configure the worker nodes
+
 Now you are ready to run the code
 
 ## References 
