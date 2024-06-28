@@ -41,13 +41,12 @@ In a Raspberry Pi cluster the login node should know the ip addresses of the wor
     ```
 
 
-Then configure wireless access point
+
 
 Next step is to configure the storage
-
-Then configure the login node (same raspberry pi that is used as wireless access point)
-
+Then configure the login node 
 Configure the worker nodes
+Now you are ready to run the code
 
 ## References 
 1. Raspberry pi cluster configuration - https://glmdev.medium.com/building-a-raspberry-pi-cluster-784f0df9afbd
